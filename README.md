@@ -33,17 +33,16 @@ I've also **included ideas and fixes from most of the pull requests** from the o
 - 📝 **JSON5 Config**: Add comments (`//`,`/* */`) to your configuration files.
 - 💓 **BetterStack Integration**: Native integration for heartbeat monitoring and alerts.
 - **Blacklist** IPs ([issue 216](https://github.com/timothymiller/cloudflare-ddns/issues/216))
-- **More services for obtaining IP** and even more to come
 - **A/AAAA** mixed type of records and **TTL** set **per subdomain**
+- Increased **security**, **performance** and easier **debugging**
 - Run **external script on error** to take action or notify
 - **Config validation** (`jsonschema`), minimizing errors 
-- Timestamp and custom comment in Cloudflare DNS records
+- **Timestamped or custom comment** in Cloudflare DNS records
 - Increased **error checking** and **exception handling**. *If one fails the rest go on*
-- Increased **security** and **performance** and easier **debugging**
-- **Upgraded** to **Python 3.10** (*from 3.7*) and **requests** for security and performance
-- `Session` requests for better **performance**
-- ⚡ **Modern Core**: Rewritten in **Python 3.10+** using `session requests` for performance and security.
+- ⚡ **Modern Core**: Upgraded to **Python 3.10+** and `Session` requests for performance and security.
 - 🐳 **Docker Ready**
+- **More services for obtaining IP** and even more to come
+- **Supported Services: ["1.1.1.1", "1.0.0.1", "cloudflare.com", "ipify", "icanhazip", "identme", "ifconfigco", "myipcom"]**
 
 
 ## 🚀 Installation
@@ -69,7 +68,6 @@ chmod 600 config.json5
 ```
 
 **3. [Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**  
-
 Edit the config file to add your Cloudflare credentials and settings
 
 **4. Run the container**
@@ -103,9 +101,7 @@ venv/bin/pip install -r requirements.txt
 **3. Set up the configuration file:**
 
 **[Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**  
-
 Edit the config file to add your Cloudflare credentials and settings.  
-
 *Remember NOT to set the "interval" in the config*
 
 ```bash
@@ -167,7 +163,6 @@ sudo venv/bin/pip install -r requirements.txt
 **3. Set up the configuration file:**  
 
 **[Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**  
-
 Edit the config file to add your Cloudflare credentials and settings
 
 ```bash
