@@ -1,10 +1,10 @@
 services:
   cloudflare-ddns-next:
-    # image: dimpendev/cloudflare-ddns-next:latest
+    image: dimpendev/cloudflare-ddns-next:latest
     # image: ghcr.io/dimpen/docktest:latest
     
-    image: local/cloudflare-ddns-next
-    build: .
+    # image: local/cloudflare-ddns-next
+    # build: .
     
     container_name: cloudflare-ddns-next
     restart: unless-stopped
