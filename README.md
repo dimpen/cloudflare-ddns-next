@@ -48,6 +48,10 @@ I've also **included ideas and fixes from most of the pull requests** from the o
 
 ## 🚀 Installation
 
+- **[Docker](#docker)**
+- **[User Cronjob](#user-cronjob)**
+- **[Systemd Service](#systemd-service)**
+
 ### Docker
 
 **1. Get docker-compose.yml**
@@ -55,20 +59,29 @@ I've also **included ideas and fixes from most of the pull requests** from the o
 ```bash
 curl -L -O https://raw.githubusercontent.com/dimpen/cloudflare-ddns-next/master/docker/docker-compose.yml
 ```
+
 **2. Get the example configuration**
+
 ```bash
 curl -L -o config.json5 https://raw.githubusercontent.com/dimpen/cloudflare-ddns-next/master/config-example.json5
+
+chmod 600 config.json5
 ```
+
 **3. [Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**  
+
 Edit the config file to add your Cloudflare credentials and settings
 
 **4. Run the container**
+
 ```bash
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
 
-### User venv for Cronjob (No Root Required)
+### User Cronjob  
+
+**No Root Required**
 
 This method installs the application locally in your user directory and relies on a cron job to trigger updates.
 
@@ -88,9 +101,13 @@ venv/bin/pip install -r requirements.txt
 ```
 
 **3. Set up the configuration file:**
-**[Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**
-Edit the config file to add your Cloudflare credentials and settings
+
+**[Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**  
+
+Edit the config file to add your Cloudflare credentials and settings.  
+
 *Remember NOT to set the "interval" in the config*
+
 ```bash
 cp config-example.json5 config.json5
 chmod 600 config.json5
@@ -108,10 +125,10 @@ exec "$PROJECT_ROOT/venv/bin/python3" main.py --config "$PROJECT_ROOT/config.jso
 EOF
 
 chmod +x cronjob.sh
-
 ```
 
 **5. Add the job to your crontab:**
+
 Open your crontab editor:
 
 ```bash
@@ -124,9 +141,9 @@ Add the following line to run the updater every 5 minutes (adjust the interval a
 */5 * * * * /<ABSOLUTE PATH TO YOUR INSTALLATION DIR>/cloudflare-ddns-next/cronjob.sh
 ```
 
+### Systemd Service  
 
-
-### Systemd Service (Requires Root)
+**Requires Root for installation but runs as www-data**
 
 This method installs the application to `/opt` and runs it as a dedicated service user (e.g., `www-data`).
 
@@ -134,7 +151,8 @@ This method installs the application to `/opt` and runs it as a dedicated servic
 
 ```bash
 cd /opt
-sudo curl -fsSL "https://github.com/dimpen/cloudflare-ddns-next/releases/latest/download/cloudflare-ddns-next.tar.gz" | tar -xz
+
+sudo curl -fsSL "https://github.com/dimpen/cloudflare-ddns-next/releases/latest/download/cloudflare-ddns-next.tar.gz" | sudo tar -xz
 
 cd cloudflare-ddns-next
 ```
@@ -146,9 +164,12 @@ sudo python3 -m venv venv
 sudo venv/bin/pip install -r requirements.txt
 ```
 
-**3. Set up the configuration file:**
-**[Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)** 
+**3. Set up the configuration file:**  
+
+**[Read the Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**  
+
 Edit the config file to add your Cloudflare credentials and settings
+
 ```bash
 sudo cp config-example.json5 config.json5
 ```
@@ -163,7 +184,6 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_ROOT/src"
 exec "$PROJECT_ROOT/venv/bin/python3" main.py --config "$PROJECT_ROOT/config.json5"
 EOF
-
 ```
 
 **5. Create the systemd service file:**
@@ -206,7 +226,7 @@ sudo systemctl status cloudflare-ddns-next.service
 
 ## 📚 Documentation
 
-**Read the Wiki for the complete configuration breakdown**
+**Read the Wiki for the complete configuration breakdown**  
 **[Go to Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**
 
 
