@@ -1,7 +1,7 @@
 services:
   cloudflare-ddns-next:
     image: dimpendev/cloudflare-ddns-next:latest
-    # image: ghcr.io/dimpen/docktest:latest
+    # image: ghcr.io/dimpen/cloudflare-ddns-next:latest
     
     # image: local/cloudflare-ddns-next
     # build: .
