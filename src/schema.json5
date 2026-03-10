@@ -100,6 +100,7 @@
                         "enum": [
                             "1111",
                             "1001",
+                            "cfcom",
                             "ipify",
                             "icanhazip",
                             "identme",
@@ -117,6 +118,7 @@
                         "enum": [
                             "1111",
                             "1001",
+                            "cfcom",
                             "ipify",
                             "icanhazip",
                             "identme",

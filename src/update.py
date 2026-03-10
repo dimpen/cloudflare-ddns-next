@@ -21,6 +21,11 @@ SERVICES = {
         "AAAA": "https://[2606:4700:4700::1001]/cdn-cgi/trace",
         "format": "linedtext"
     },
+    "cfcom": {
+        "A": "https://cloudflare.com/cdn-cgi/trace",
+        "AAAA": "https://cloudflare.com/cdn-cgi/trace",
+        "format": "linedtext"
+    },
     "ipify": {
         "A": "https://api.ipify.org",
         "AAAA": "https://api6.ipify.org",

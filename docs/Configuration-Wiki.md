@@ -112,12 +112,13 @@ You can harden the consensus even more by **increasing the "majority"** in the c
 |              |                                              |            |           |
 | *ifconfigco* | https://ifconfig.co/json                     | IPv4/IPv6  | json      |
 | *myipcom*    | https://api.myip.com                         | IPv4/IPv6  | json      |
+| *cfcom*      | https://cloudflare.com/cdn-cgi/trace         | IPv4/IPv6  | linedtext |
 
 *Open an issue or a pull request to add more.*
 
 ***Note:*** You only **specify the service name** in the list used (*"priority" or "consensus"*) and the relevant IPv4/IPv6 URLs will be checked according to the type of records (A/AAAA) you've set in the configuration.
 
-`ifconfigco` and `myipcom` do not work with mixed A/AAAA records. So if you want both A and AAAA records do NOT use these or you'll get a configuration error.
+`ifconfigco`, `myipcom`, `cfcom` do not work with mixed A/AAAA records. So if you want both A and AAAA records do NOT use these or you'll get a configuration error.
 
 
 ## Configuration Overview
