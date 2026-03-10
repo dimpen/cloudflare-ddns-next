@@ -180,12 +180,13 @@ def setup_config():
                     subdomain.update({"ttl": subd_ttl})
 
         if cnf.get("A") and cnf.get("AAAA"):
-            consensusList = cnf.get("consensus")
-            if consensusList and len(consensusList) > 0:
-                limitedServices = ["ifconfigco", "myipcom"]
+            ipListSelected = cnf.get("consensus", cnf.get("priority",{}))
+            ipListName = "consensus" if cnf.get("consensus") else "priority"
+            if len(ipListSelected) > 0:
+                limitedServices = ["ifconfigco", "myipcom", "cfcom"]
                 for service in limitedServices:
-                    if service in consensusList:
-                        raise Exception(f'Service {service} does not support mixed A and AAAA records but you have set both A and AAAA records in your subdomains. Remove the service from the consensus list.')
+                    if service in ipListSelected:
+                        raise Exception(f'Service {service} does not support mixed A and AAAA records but you have set both A and AAAA records in your subdomains. Remove the service from the {ipListName} list.')
 
 
         
