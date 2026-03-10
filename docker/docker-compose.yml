@@ -1,0 +1,38 @@
+services:
+  cloudflare-ddns-next:
+    # image: dimpendev/cloudflare-ddns-next:latest
+    # image: ghcr.io/dimpen/docktest:latest
+    
+    image: local/cloudflare-ddns-next
+    build: .
+    
+    container_name: cloudflare-ddns-next
+    restart: unless-stopped
+    # network_mode: 'host' # not necessary
+    
+    ## default user is 1000:1000, if you want to change it, 
+    ## set the line below to the user and group id you want to use 
+    ## (e.g. "33:33" for "www-data:www-data")
+    # user: "33:33"
+    
+    security_opt:
+      - no-new-privileges:true
+    
+    ## set the interval for updates. Overrides the config option if set.
+    command: --interval 300
+    
+    volumes:
+      - ./config.json5:/config.json:ro
+      
+      ## if you configured logfile, iplog or tmpIpFile and you want to persist them,
+      ## uncomment the line below and make sure to chown the folder to the same user 
+      ## running the container (default is 1000:1000) or the user you specified above.
+      ## chown example: sudo chown 1000:1000 data
+      # - ./data:/data
+
+    ## if you want to use environment variables instead set them here.
+    # environment:
+    #   - CF_DDNS_API_TOKEN_1=THISISMYSECRETTOKEN
+    ## OR set in a .env file and uncomment the lines below
+    # env_file:
+    #   - .env

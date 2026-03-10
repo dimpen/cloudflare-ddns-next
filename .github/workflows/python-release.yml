@@ -1,0 +1,56 @@
+name: Python Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+      
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # creating tags and releases
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        # with:
+        #   fetch-depth: 0  # for comparing commits
+
+      # - name: Set up Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.14' # same version with docker python:alpine
+      
+      - name: Get Repository name
+        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+        
+      - name: Copy distribution files
+        run: |
+          mkdir ${{ env.REPOSITORY_NAME }}
+          cp requirements.txt ${{ env.REPOSITORY_NAME }}
+          cp config-example.json5 ${{ env.REPOSITORY_NAME }}
+          cp docs/Configuration-Wiki.md ${{ env.REPOSITORY_NAME }}
+          cp README.md ${{ env.REPOSITORY_NAME }}
+          cp LICENSE ${{ env.REPOSITORY_NAME }}
+          cp -r src ${{ env.REPOSITORY_NAME }}
+          echo "Copied distribution files"
+
+      - name: Create tar.gz installation package
+        run: |
+          tar -cvzf ${{ env.REPOSITORY_NAME }}.tar.gz ${{ env.REPOSITORY_NAME }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ github.ref_name }}
+          generate_release_notes: true
+          body: |
+            Automated release ${{ env.REPOSITORY_NAME }}-${{ github.ref_name }}
+          files: |
+            ${{ env.REPOSITORY_NAME }}-install.tar.gz
+            README.md
+            LICENSE
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

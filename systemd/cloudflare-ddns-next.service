@@ -1,0 +1,15 @@
+[Unit]
+Description=Cloudflare DDNS Next Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/cloudflare-ddns-next/systemd-service.sh
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

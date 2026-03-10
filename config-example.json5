@@ -1,0 +1,94 @@
+// This is an example config file. 
+// Read the wiki for detailed documentation of all options:
+// https://github.com/dimpen/cloudflare-ddns-next/wiki
+
+{
+  accounts: [
+    {
+      authentication: {
+        api_token: "dfsgdsfgdsfgdsfgdsfgd_dsfgds-fgdsfgdsdff",
+        // "api_key": {
+        //   "auth_key": "sdfgsdfgdfgsdfdfsdsf",
+        //   "account_email": "email@example.com"
+        // }
+      },
+      zones: [
+        {
+          id: "dfsgdsfgdsfgdsfgdsfgddfsadfasdfs",
+          name: "example.com",
+          subdomains: [
+            {
+              name: "", // empty for @ root domain
+              proxied: true,
+              type: "A",
+            },
+            {
+              name: "www",
+              proxied: true,
+              type: "A",
+            },
+            {
+              name: "direct",
+              proxied: false,
+              type: "A",
+            },
+          ],
+        },
+        {
+          id: "gfdsgdfsgdfgdsfgdsfgfddsfg",
+          name: "anotherexample.com",
+          purgeUnknownRecords: true,
+          subdomains: [
+            {
+              name: "",
+              proxied: true,
+              type: "A",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  updater: {
+    // "priority": ["1111", "ipify"],
+
+    consensus: ["1111", "1001", "ipify", "icanhazip", "identme"],
+    majority: 3,
+
+    // blacklist: ["104.18.0.0", "2606:4700:7::"],
+
+    interval: 300, // seconds. REMOVE FOR CRONJOB!
+    requestTimeout: 20, // seconds
+
+    ttl: 300,
+    disableComments: false,
+
+    // "externalScript": ["./on-error-script.sh", "--with", "arg1", "--and", "arg2"],
+    // "logExternalOutput": true, // to log the output of the external script to the main logs.
+
+    // "betterstack_token": "dsfgsdfgsdfgsdfgsdfg",
+
+    onlyOnChange: true,
+    tmpIpFile: "./tmpnew/cloudflare-ddns-next-ip_tempfile.txt",
+  },
+  logging: {
+    stdout: { level: "INFO" },
+    // make sure your user has write permissions to the logfile paths if you enable file logging.
+    logfile: {
+      level: "INFO",
+      filename: "/var/log/cloudflare-ddns-next/cloudflare-ddns-next.log",
+      max_bytes: 5242880, // 5MB
+      max_count: 10, // how many log files to keep rotating
+      format: "text", // text/json
+    },
+
+    iplog: { // separate rotating logfile that logs only the obtained IPs
+      filename: "/var/log/cloudflare-ddns-next/cloudflare-ddns-next-ip.log",
+      max_bytes: 1048576, // 1MB
+      max_count: 5, // how many log files to keep rotating
+      // if true will log the obtained IP only if it has changed
+      onlyIpChange: false, // true/false
+      format: "text", // text/json
+    },
+  },
+}
