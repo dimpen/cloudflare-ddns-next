@@ -54,10 +54,10 @@ This is called **"priority"** mechanism and now you can configure the list to ad
 
 The old behavior was to check 1.1.1.1 and if it fails then check 1.0.0.1. 
 
-***This is still the default i.e.:***
+***The new default is:***
 
 ```json5
-"priority": ["1111", "1001"]
+"priority": ["ipify", "identme", "icanhazip"]
 ```
 
 ### Consensus Algorithm

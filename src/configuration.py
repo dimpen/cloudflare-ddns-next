@@ -11,7 +11,7 @@ from argparse import ArgumentParser
 
 DEFAULTS = {
     "updater": {
-        "priority": ["1111", "1001"],
+        "priority": ["ipify", "identme", "icanhazip"],
         "A": False,
         "AAAA": False,
         "ttl": 300,
