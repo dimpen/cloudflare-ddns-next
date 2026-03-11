@@ -14,7 +14,7 @@
 
 ---
 
-## 🌟 Origin Story
+## 🌟 Origin
 
 This project is a complete rewrite of the original [original cloudflare-ddns repo](https://github.com/timothymiller/cloudflare-ddns) by [timothymiller](https://github.com/timothymiller/).  
 The original tool kept our DDNS records updated for years but unfortunately it is not being maintained anymore.
@@ -43,6 +43,12 @@ I've also **included ideas and fixes from most of the pull requests** from the o
 - 🐳 **Docker Ready**
 - **More services for obtaining IP** and even more to come
 - **Supported Services: ["1.1.1.1", "1.0.0.1", "cloudflare.com", "ipify", "icanhazip", "identme", "ifconfigco", "myipcom"]**
+
+
+## 📚 Documentation
+
+**Read the Wiki for the complete configuration breakdown**  
+**[Go to Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**
 
 
 ## 🚀 Installation
@@ -218,11 +224,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now cloudflare-ddns-next.service
 sudo systemctl status cloudflare-ddns-next.service
 ```
-
-## 📚 Documentation
-
-**Read the Wiki for the complete configuration breakdown**  
-**[Go to Wiki](https://github.com/dimpen/cloudflare-ddns-next/wiki)**
 
 
 ## Discussion
