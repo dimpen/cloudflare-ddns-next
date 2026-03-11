@@ -23,7 +23,8 @@ So after the recent **Cloudflare Fiasco** ([issue 216](https://github.com/timoth
 
 I've also **included ideas and fixes from most of the pull requests** from the original repo.
 
-**Checkout the new Consensus Algorithm** to ensure your DNS records are *never* updated with a bad IP.
+**Checkout the new Consensus Algorithm** to ensure your DNS records are *never* updated with a bad IP.  
+Or you can stick with the old **"priority"** algorithm.
 
 ## ✨ New Features
 
@@ -33,7 +34,7 @@ I've also **included ideas and fixes from most of the pull requests** from the o
 - 📝 **JSON5 Config**: Add comments (`//`,`/* */`) to your configuration files.
 - 💓 **BetterStack Integration**: Native integration for heartbeat monitoring and alerts.
 - **Blacklist** IPs ([issue 216](https://github.com/timothymiller/cloudflare-ddns/issues/216))
-- **A/AAAA** mixed type of records and **TTL** set **per subdomain**
+- **A/AAAA** mixed type of records and **TTL/proxied** set **per subdomain**
 - Increased **security**, **performance** and easier **debugging**
 - Run **external script on error** to take action or notify
 - **Config validation** (`jsonschema`), minimizing errors 
