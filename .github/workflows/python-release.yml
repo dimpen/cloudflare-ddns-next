@@ -50,7 +50,6 @@ jobs:
             Automated release ${{ env.REPOSITORY_NAME }}-${{ github.ref_name }}
           files: |
             ${{ env.REPOSITORY_NAME }}.tar.gz
-            README.md
             LICENSE
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
