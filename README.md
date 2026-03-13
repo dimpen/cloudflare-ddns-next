@@ -235,9 +235,14 @@ That means we have to minimize all errors, handle errors and IF an error occurs 
 
 As a system administrator I appreciate extensive logging that can help easily keep track of and debug errors with this script, Cloudflare or even with other system processes that may be impacted by DNS or IPs.
 
+I've kept the codebase as clean and simple as possible to implement the current features.
+
 
 ## 🗺️ Roadmap
 
+- [ ] Apprise Integration
+- [ ] Uptime Kuma integration
+- [ ] Docker Healthchecks support
 - [ ] Mixed IPv4 and IPv6 support for all services
 - [ ] Load balancer support
 - [ ] CNAME support
