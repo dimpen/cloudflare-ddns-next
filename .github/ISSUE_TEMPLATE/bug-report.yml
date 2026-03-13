@@ -1,0 +1,121 @@
+name: Bug Report
+description: Report a bug
+title: "[Bug]: "
+labels: [":bug: bug"]
+body:
+  - type: checkbox
+    id: urgent
+    attributes:
+      label: Check if this is urgent
+    options:
+    - label: Urgent
+  - type: input
+    id: version
+    attributes:
+      label: What version of cloudflare-ddns-next are you using?
+      description: |
+        Either the version`vx.y.z` or commit id if you're running from source.
+      placeholder: "v1.0.1 or ec2c54e"
+    validations:
+      required: true
+  - type: input
+    id: host-os
+    attributes:
+      label: Python version
+      description: What is your Python version? You can find it with `python --version` or `python3 --version`.
+      placeholder: "Python 3.10.12"
+  - type: dropdown
+    id: virtual-env
+    attributes:
+      label: Are you running the application in a virtual environment?
+      options:
+        - "No"
+        - "Yes"
+  - type: input
+    id: host-os
+    attributes:
+      label: Host OS
+      description: What is your host OS?
+      placeholder: "Ubuntu 22.04.5 LTS"
+  - type: dropdown
+    id: cpu-arch
+    attributes:
+      label: CPU arch
+      description: You can find it on Linux with `uname -m`.
+      placeholder: "x86_64"
+  - type: dropdown
+    id: docker
+    attributes:
+      label: What are you using to run the application?
+      options:
+        - docker run
+        - docker-compose
+        - systemd service
+        - cron job
+        - Other
+  - type: textarea
+    id: problem
+    attributes:
+      label: "What's the problem?"
+      value: |
+        ## Description
+
+        A clear and concise description of what the bug is.
+
+        ## Reproduction Steps
+
+        Steps to reproduce the behavior
+
+        ## Expected Behavior
+
+        A clear and concise description of what you expected to happen.
+
+        ## Actual Behavior
+
+        A clear and concise description of what actually happens.
+
+        ## Screenshots
+
+        If applicable, add screenshots to help explain your problem.
+        
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Share your debug logs
+      description: |
+        **How to enable debug logging:**
+        Set 
+        ```
+            "stdout": { "level": "DEBUG" },
+            // or
+            "logfile": {
+                "level": "DEBUG",
+            }
+        ``` 
+      value: |
+        <details>
+          <summary>Click to see logs</summary>
+          <!-- Please leave one blank line below for enabling the code block rendering. -->
+
+          ```
+          [Paste your logs here]
+          ```
+        </details>
+      
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Share your configuration
+      description: Share your configuration such `config.json5`. Ensure to remove credentials.
+      render: json5
+  
+  - type: textarea
+    id: config
+    attributes:
+      label: Share your docker-compose.yml
+      description: If you are using `docker-compose.yml`, please share it here. Ensure to remove credentials.
+      render: yml
