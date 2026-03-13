@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest a feature
+title: "Feature request: "
+labels: [":bulb: feature request"]
+body:
+  - type: checkboxes
+    id: dev-contributor
+    attributes:
+      label: Check if you are a developer and want to contribute to this feature
+      options:
+        - label: Developer
+  - type: checkboxes
+    id: breaking-change
+    attributes:
+      label: Check if this is a breaking change
+      options:
+        - label: Breaking change
+  - type: textarea
+    id: description
+    attributes:
+      label: "What's the feature?"
+      placeholder: "Add service X for obtaining an IP address."
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Extra information and references"
+      placeholder: |
+        - Add any other context or references about the feature here.
+        - Share links to similar features in other projects or documentation if applicable.
+        - If you are a developer and want to contribute to this feature, please share your ideas on how to implement it.

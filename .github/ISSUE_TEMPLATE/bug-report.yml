@@ -3,12 +3,12 @@ description: Report a bug
 title: "[Bug]: "
 labels: [":bug: bug"]
 body:
-  - type: checkbox
+  - type: checkboxes
     id: urgent
     attributes:
-      label: Check if this is urgent
-    options:
-    - label: Urgent
+      label: Check if this issue is urgent
+      options:
+        - label: Urgent
   - type: input
     id: version
     attributes:
@@ -19,25 +19,24 @@ body:
     validations:
       required: true
   - type: input
-    id: host-os
+    id: python-version
     attributes:
       label: Python version
       description: What is your Python version? You can find it with `python --version` or `python3 --version`.
       placeholder: "Python 3.10.12"
-  - type: dropdown
+  - type: checkboxes
     id: virtual-env
     attributes:
-      label: Are you running the application in a virtual environment?
+      label: Check if you are running the application in a virtual environment
       options:
-        - "No"
-        - "Yes"
+        - label: virtual-env
   - type: input
     id: host-os
     attributes:
       label: Host OS
       description: What is your host OS?
       placeholder: "Ubuntu 22.04.5 LTS"
-  - type: dropdown
+  - type: input
     id: cpu-arch
     attributes:
       label: CPU arch
@@ -78,6 +77,12 @@ body:
 
         If applicable, add screenshots to help explain your problem.
         
+        ## Additional Context
+        
+        Add any other context about the problem here.
+        
+        If you are using `docker-compose.yml`, please share it here. Ensure to remove credentials.
+        
     validations:
       required: true
   - type: textarea
@@ -85,8 +90,7 @@ body:
     attributes:
       label: Share your debug logs
       description: |
-        **How to enable debug logging:**
-        Set 
+        **To enable debug logging set:** 
         ```
             "stdout": { "level": "DEBUG" },
             // or
@@ -107,15 +111,8 @@ body:
     validations:
       required: true
   - type: textarea
-    id: config
+    id: configuration
     attributes:
       label: Share your configuration
       description: Share your configuration such `config.json5`. Ensure to remove credentials.
       render: json5
-  
-  - type: textarea
-    id: config
-    attributes:
-      label: Share your docker-compose.yml
-      description: If you are using `docker-compose.yml`, please share it here. Ensure to remove credentials.
-      render: yml
