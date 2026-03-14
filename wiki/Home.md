@@ -245,15 +245,15 @@ This configuration **applies to all** accounts/zones/subdomains.
 
 **"updater"** and all its settings are **optional**. 
 
-These are the default values:
+**These are the default values:**
 
 ```json5
 "updater": {
-    "priority": ["1111", "1001"],
+    "priority": ["ipify", "identme", "icanhazip"],
     "ttl": 300,
     "blacklist": [],
     "onlyOnChange": false,
-    "tmpIpFile": "./.tmp/cloudflare-ddns-next-ip_tempfile.txt",
+    "tmpIpFile": "./tmp/cloudflare-ddns-next-ip_tempfile.txt",
     "requestTimeout": 20,
     "disableComments": false,
     
@@ -265,6 +265,8 @@ These are the default values:
     // "betterstack_token": "dsfgsdfgsdfgsdfgsdfg",
 }
 ```
+
+**Choose either "priority" or "consensus".**  
 
 If both "priority" and "consensus" are set then "consensus" will be used and you'll get a warning log notifying you.
 
