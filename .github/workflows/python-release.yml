@@ -31,7 +31,7 @@ jobs:
           mkdir ${{ env.REPOSITORY_NAME }}
           cp requirements.txt ${{ env.REPOSITORY_NAME }}
           cp config-example.json5 ${{ env.REPOSITORY_NAME }}
-          cp docs/Configuration-Wiki.md ${{ env.REPOSITORY_NAME }}
+          cp wiki/Home.md ${{ env.REPOSITORY_NAME }}/Configuration-Wiki.md
           cp README.md ${{ env.REPOSITORY_NAME }}
           cp LICENSE ${{ env.REPOSITORY_NAME }}
           cp -r src ${{ env.REPOSITORY_NAME }}

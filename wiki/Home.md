@@ -135,7 +135,7 @@ You can change the **configuration file** used with the run argument:
 
 **"CF_DDNS_"** environment variables are still supported and you can also set the configuration file with `CONFIG_PATH`.
 
-If no `--config` or `CONFIG_PATH` are set then the **default** is to read `config.json` in the current working directory.
+If no `--config` or `CONFIG_PATH` are set then the **default** is to read the first available file in the order `config.json5` or `config.jsonc` or `config.json` in the current working directory.
 
 
 ## Cloudflare
