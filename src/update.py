@@ -14,11 +14,13 @@ SERVICES = {
     "1111": {
         "A": "https://1.1.1.1/cdn-cgi/trace",
         "AAAA": "https://[2606:4700:4700::1111]/cdn-cgi/trace",
+        "host": "one.one.one.one",
         "format": "linedtext"
     },
     "1001": {
         "A": "https://1.0.0.1/cdn-cgi/trace",
         "AAAA": "https://[2606:4700:4700::1001]/cdn-cgi/trace",
+        "host": "one.one.one.one",
         "format": "linedtext"
     },
     "cfcom": {
@@ -90,7 +92,7 @@ def updateRecords():
         if not missing:
             logger.info(f'Valid IP records: {records}')
             logger.info(f'Updating Cloudflare...')
-            if recsChanged: updateReady = True
+            # if recsChanged: updateReady = True
         else:
             logger.error(f'Partial valid records: {records}')
             logger.error(f'Partially Updating Cloudflare...')
@@ -127,7 +129,7 @@ Does all the technical error checks and either returns a valid IP or None
 def get_ip(session, service, typeRec):
     ip = None
     try:      
-        response = session.get(SERVICES[service][typeRec], timeout=CONF["requestTimeout"])
+        response = session.get(SERVICES[service][typeRec], headers={"Host": SERVICES[service]["host"]} if SERVICES[service].get("host") else None, timeout=CONF["requestTimeout"])
         response.raise_for_status()
         
         frmt = SERVICES[service]["format"]
