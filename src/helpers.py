@@ -62,7 +62,7 @@ Checks the blacklist and returns None if there's a match or the ip if no match
 """
 def check_blacklist(ip):
     try:
-        if CONF["blacklist"]:
+        if CONF.get("blacklist"):
             for badip in CONF["blacklist"]:
                 if ip.startswith(badip):
                     logger.warning(f'IP {ip} is blacklisted')
