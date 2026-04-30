@@ -83,7 +83,7 @@ def cloudflare_update(new_records):
                                     raise Exception(f'No valid type {rec_type} IP for: {rec_name}')
                                 
                                 # find record in cf records
-                                cfsubd = next((x for x in cfrecs if x["name"] == rec_name), {})
+                                cfsubd = next((x for x in cfrecs if x["name"] == rec_name and x["type"] == rec_type), {})
                                 
                                 # because cf allows only auto ttl for proxied records
                                 rec_ttl = 1 if subd.get("proxied") else subd["ttl"] 
@@ -138,7 +138,7 @@ def cloudflare_update(new_records):
                         if zone.get("purgeUnknownRecords"):
                             try:
                                 for cfrec in cfrecs:
-                                    found_rec = next((x for x in subdomains if x["name"] == ".".join(cfrec.get("name").split('.')[:-2])), {})
+                                    found_rec = next((x for x in subdomains if x["name"] == ".".join(cfrec.get("name").split('.')[:-2]) and x.get("type") == cfrec.get("type")), {})
                                     if not found_rec and cfrec.get("type") in ["A","AAAA"]: 
                                         logger.debug(f'Deleting DNS Record:\n{json.dumps(cfrec, sort_keys=True, indent=2)}')
                                         rd = s.delete(f'https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records/{cfrec.get("id")}', timeout=CONF["requestTimeout"])
